@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+type: software
+title: freeze-request
+abstract: >-
+  Evidence packages for a stablecoin issuer's freeze team or a law-enforcement referral:
+  transaction chain, off-ramp points, token contracts and addresses, a stated tracing rule, balances
+  and a timeline, as JSON and Markdown, with GENIUS Act lawful-order checks and the issuers'
+  published freeze policies. Engineering checklist, not legal advice.
+authors:
+  - family-names: Akopian
+    given-names: Art
+    affiliation: Banrox Inc.
+    email: opensource@banrox.com
+repository-code: https://github.com/BanroxArt/freeze-request
+license: MIT
+version: 0.1.0
+date-released: 2026-11-16
+keywords:
+  - stablecoin
+  - freeze
+  - blacklist
+  - genius-act
+  - fraud
+  - investigations
+  - usdc
+  - law-enforcement

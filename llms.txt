@@ -1,0 +1,25 @@
+# freeze-request
+
+> Evidence packages for a stablecoin issuer's freeze team or a law-enforcement referral: transaction chain, off-ramp points, token contracts and addresses, a stated tracing rule, balances and a timeline, as JSON and Markdown, with GENIUS Act lawful-order checks and the issuers' published freeze policies. Engineering checklist, not legal advice.
+
+A freeze needs a lawful order or the issuer's own decision under its policy; the package is neither, and says so. Standard library only; never queries a blockchain. Tested on synthetic data only.
+
+Built and maintained by Art Akopian, CEO of Banrox (https://banrox.com).
+
+## Docs
+
+- [README.md](https://github.com/BanroxArt/freeze-request/blob/main/README.md): Checks, tracing rule, case format, what is real and what is not.
+- [docs/sources.md](https://github.com/BanroxArt/freeze-request/blob/main/docs/sources.md): Primary sources.
+- [SKILL.md](https://github.com/BanroxArt/freeze-request/blob/main/SKILL.md): Agent skill for preparing a freeze request.
+
+## Source
+
+- [checks.py](https://github.com/BanroxArt/freeze-request/blob/main/src/freezereq/checks.py): The FR rules.
+- [trace.py](https://github.com/BanroxArt/freeze-request/blob/main/src/freezereq/trace.py): Stolen-first tracing.
+- [issuers.py](https://github.com/BanroxArt/freeze-request/blob/main/src/freezereq/issuers.py): Issuer policies with sources.
+- [build.py](https://github.com/BanroxArt/freeze-request/blob/main/src/freezereq/build.py): JSON and Markdown output.
+
+## Optional
+
+- [examples/case.json](https://github.com/BanroxArt/freeze-request/blob/main/examples/case.json): Synthetic wire fraud converted to stablecoins.
+- [CHANGELOG](https://github.com/BanroxArt/freeze-request/blob/main/CHANGELOG.md): Notable changes.

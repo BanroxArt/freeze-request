@@ -1,0 +1,235 @@
+{
+  "case_id": "ECB-FRZ-2026-0007-LE",
+  "purpose": "law_enforcement_referral",
+  "prepared_by": {
+    "org": "Example Community Bank, Fraud Investigations",
+    "contact": "fraud-desk@ecb.example"
+  },
+  "prepared_on": "2026-11-14",
+  "summary": "A business customer was tricked by a spoofed supplier email into wiring $250,000 to a new account at Example Exchange LLC. The account had been opened two days earlier in a name that does not match the supplier. This is a new-account cash-out: money moved to a brand-new account and sent straight out. Within hours the exchange account bought USDC and withdrew it to a self-hosted wallet, which split it, bridged part to Base and swapped part to USDT. We ask the issuers to review the addresses below that still hold traced funds.",
+  "tokens": [
+    {
+      "symbol": "USDC",
+      "network": "ethereum",
+      "contract": "0x21584523d538f55e3a68cc3a255c9a068b596a8d",
+      "decimals": 6
+    },
+    {
+      "symbol": "USDC",
+      "network": "base",
+      "contract": "0x9d37b6a044b5db00a1581ad0181c8163033b3efe",
+      "decimals": 6
+    },
+    {
+      "symbol": "USDT",
+      "network": "ethereum",
+      "contract": "0x2529bd2e33ff79301fff2ee6dd400ad4e675087e",
+      "decimals": 6
+    }
+  ],
+  "addresses": [
+    {
+      "network": "ethereum",
+      "address": "0x00e92cc3b3d3f2fa9ea04579b9c882f87bccc320",
+      "role": "exchange_deposit",
+      "label": "Example Exchange LLC withdrawal wallet",
+      "service": "Example Exchange LLC",
+      "evidence": "Exchange's response to our 314(b) request ECB-314B-2026-0042"
+    },
+    {
+      "network": "ethereum",
+      "address": "0x9e5cb10d483df63a0c4dec31eb971673b82cdc7d",
+      "role": "suspect",
+      "label": "first self-hosted wallet"
+    },
+    {
+      "network": "ethereum",
+      "address": "0xcff2b12c82ccdfda0bf3d9cb7760ab6ed6a6e041",
+      "role": "suspect"
+    },
+    {
+      "network": "ethereum",
+      "address": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "role": "suspect"
+    },
+    {
+      "network": "base",
+      "address": "0x9d16866328164835574ed270a8c6a18fe2444fe2",
+      "role": "suspect"
+    },
+    {
+      "network": "ethereum",
+      "address": "0xde0c9a307eee900f29e957f6cd90d8b301a4317f",
+      "role": "exchange_deposit",
+      "service": "Example Offshore Exchange",
+      "evidence": "Deposit address pattern; not confirmed by the exchange"
+    },
+    {
+      "network": "base",
+      "address": "0x0791c8df8721676e25140a971e73c5eff3bf48b1",
+      "role": "exchange_deposit",
+      "service": "Example Base Exchange",
+      "evidence": "Labelled by the exchange in its own support reply"
+    }
+  ],
+  "hops": [
+    {
+      "tx": "0xd4474458451daec6c9a43208bb1df591c8d670b555bfc3f64efb6faa90e7d8b7",
+      "network": "ethereum",
+      "time": "2026-11-12T19:42:11Z",
+      "from": "0x00e92cc3b3d3f2fa9ea04579b9c882f87bccc320",
+      "to": "0x9e5cb10d483df63a0c4dec31eb971673b82cdc7d",
+      "symbol": "USDC",
+      "amount": "249000",
+      "origin": true,
+      "note": "Withdrawal the exchange tied to the wired funds"
+    },
+    {
+      "tx": "0xb6b218af1bc6274e8234f244c4cd59007248a411e9bde0304f83bd6cc8ddf95b",
+      "network": "ethereum",
+      "time": "2026-11-12T20:05:47Z",
+      "from": "0x9e5cb10d483df63a0c4dec31eb971673b82cdc7d",
+      "to": "0xcff2b12c82ccdfda0bf3d9cb7760ab6ed6a6e041",
+      "symbol": "USDC",
+      "amount": "150000"
+    },
+    {
+      "tx": "0x8f4baffd4c8b48a668469bdc76bf095f85c76e1d3d50fef9fd80670a9f0d750c",
+      "network": "ethereum",
+      "time": "2026-11-12T20:06:59Z",
+      "from": "0x9e5cb10d483df63a0c4dec31eb971673b82cdc7d",
+      "to": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "symbol": "USDC",
+      "amount": "99000"
+    },
+    {
+      "tx": "0xf402b764be8531dcbf74129bed9b317468ef1f09ab0f2c315529ccf84c5f9b24",
+      "network": "ethereum",
+      "time": "2026-11-12T20:31:02Z",
+      "kind": "bridge",
+      "from": "0xcff2b12c82ccdfda0bf3d9cb7760ab6ed6a6e041",
+      "to": "0x9d16866328164835574ed270a8c6a18fe2444fe2",
+      "symbol": "USDC",
+      "amount": "150000",
+      "to_network": "base",
+      "amount_out": "149985.5",
+      "note": "Bridge fee 14.50 USDC"
+    },
+    {
+      "tx": "0x3396d919e310e91ea01861bb3887306f0262698c9efb86e796a8da4d6a107ee4",
+      "network": "ethereum",
+      "time": "2026-11-12T21:10:40Z",
+      "kind": "swap",
+      "from": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "to": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "symbol": "USDC",
+      "amount": "99000",
+      "to_symbol": "USDT",
+      "amount_out": "98950.25"
+    },
+    {
+      "tx": "0x02385c10318bab2619d2058eb426e83af4670b6487b33fce0d0fa075e7260993",
+      "network": "ethereum",
+      "time": "2026-11-13T02:14:09Z",
+      "from": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "to": "0xde0c9a307eee900f29e957f6cd90d8b301a4317f",
+      "symbol": "USDT",
+      "amount": "60000"
+    },
+    {
+      "tx": "0x683999f7f942e82473e8c4ac9743de6273b2d8e3fe5e230e7fda9e0b3336de68",
+      "network": "base",
+      "time": "2026-11-13T03:40:55Z",
+      "from": "0x9d16866328164835574ed270a8c6a18fe2444fe2",
+      "to": "0x0791c8df8721676e25140a971e73c5eff3bf48b1",
+      "symbol": "USDC",
+      "amount": "20000"
+    }
+  ],
+  "targets": [
+    {
+      "network": "base",
+      "address": "0x9d16866328164835574ed270a8c6a18fe2444fe2",
+      "symbol": "USDC",
+      "amount": "129985.5",
+      "reason": "Received the bridged funds; still holds most of them."
+    },
+    {
+      "network": "ethereum",
+      "address": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "symbol": "USDT",
+      "amount": "38950.25",
+      "reason": "Swapped the second share to USDT and still holds the rest."
+    }
+  ],
+  "funding": [
+    {
+      "rail": "wire",
+      "date": "2026-11-12",
+      "amount_cents": 25000000,
+      "currency": "USD",
+      "sender_institution": "Example Community Bank",
+      "receiver_institution": "Example Settlement Bank for Example Exchange LLC",
+      "refs": {
+        "uetr": "6f1c2a8e-3b7d-4c55-9e21-0a4b8c9d7e10",
+        "imad": "20261112QMGFT015000812"
+      },
+      "note": "Recall requested 2026-11-13; the receiving bank says the funds were already used to buy USDC."
+    }
+  ],
+  "balances": [
+    {
+      "network": "base",
+      "address": "0x9d16866328164835574ed270a8c6a18fe2444fe2",
+      "symbol": "USDC",
+      "amount": "129985.5",
+      "as_of": "2026-11-14T16:00:00Z",
+      "source": "basescan token balance, screenshot saved to case file"
+    },
+    {
+      "network": "ethereum",
+      "address": "0x98d78f929048adef99cdfd66acc457d25e7e526a",
+      "symbol": "USDT",
+      "amount": "38950.25",
+      "as_of": "2026-11-14T16:05:00Z",
+      "source": "etherscan token balance, screenshot saved to case file"
+    }
+  ],
+  "events": [
+    {
+      "time": "2026-11-12T17:55:00Z",
+      "what": "Customer sends the wire after a spoofed supplier email changes the bank details"
+    },
+    {
+      "time": "2026-11-13T15:20:00Z",
+      "what": "Customer reports the fraud; wire recall sent"
+    },
+    {
+      "time": "2026-11-13T22:00:00Z",
+      "what": "Example Exchange LLC answers our 314(b) request and gives the withdrawal transaction"
+    }
+  ],
+  "victim": {
+    "name": "Example Manufacturing Co",
+    "account": "ending 4417",
+    "contact": "through Example Community Bank"
+  },
+  "reported_to": [
+    "FBI IC3 complaint I2611130001 (synthetic number), 2026-11-13"
+  ],
+  "order": {
+    "authority_kind": "court",
+    "authority": "U.S. District Court (synthetic)",
+    "reference": "Case No. 0:26-mj-00000 (synthetic)",
+    "date": "2026-11-15",
+    "final": true,
+    "reviewable": true,
+    "attached": false,
+    "addresses": [
+      {
+        "network": "base",
+        "address": "0x9d16866328164835574ed270a8c6a18fe2444fe2"
+      }
+    ]
+  }
+}
